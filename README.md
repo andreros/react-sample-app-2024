@@ -1,11 +1,12 @@
 # React Sample App 2024
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React Sample Application built with 2024 technologies.
 
-Currently, two official plugins are available:
+## Application purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React sample application purpose is to help bootstrap new React projects in a simple and fast way. This application can also be considered a boilerplate application with all the preferred development configurations, folder structure and tools in place and ready to start coding.
+
+Please, bear in mind that this application is always evolving and new tools may be added along the way.
 
 ## Application Tech Stack
 
@@ -14,7 +15,8 @@ Currently, two official plugins are available:
 
 ## Application Support and Tools
 
-- `Vite` to bundle the application and serve it in development mode;
+- `Vite` to bundle the application, serve it in development mode and ensure HMR during development;
+  - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Application Code Quality
 
@@ -25,44 +27,54 @@ Currently, two official plugins are available:
 - `Vitest` javascript testing framework;
 - `React Testing Library` testing framework for working with React components;
 
-## Expanding the ESLint configuration
+## Application scripts
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installation and application bootstrap
 
-- Configure the top-level `parserOptions` property like this:
+From the project root folder, please execute the following commands in a terminal window:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+```bash
+# install the application dependencies
+npm i
+
+# start the application in development mode
+npm run dev
+
+# build a version of the application for distribution
+npm run build
+
+# preview the built version of the application for distribution
+npm run preview
+
+# clean project dependencies before pushing code
+npm run clean
+
+# reset project installation and perform a fresh install
+npm run nuke
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Code Quality
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+```bash
+# run ESLint
+npm run lint
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
+# run ESLint and fix all automatically fixable problems
+npm run lint:fix
+
+# run all the necessary commands before a code commit
+npm run pre-commit
+```
+
+### Testing
+
+```bash
+# run the application unit tests
+npm run test
+
+# run the application unit tests in file watch mode
+npm run test:watch
+
+# run the application unit tests and present a code coverage report
+npm run test:coverage
 ```
